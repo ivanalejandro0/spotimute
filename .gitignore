@@ -52,3 +52,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Ignore the blacklisted songs
+src/blacklisted.txt
