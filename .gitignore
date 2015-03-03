@@ -54,4 +54,4 @@ docs/_build/
 target/
 
 # Ignore the blacklisted songs
-src/blacklisted.txt
+spotimute/blacklisted.txt
