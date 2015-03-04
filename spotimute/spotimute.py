@@ -22,6 +22,8 @@ class Spotimute(QtGui.QWidget):
         self.ui = Ui_Spotimute()
         self.ui.setupUi(self)
 
+        self.ui.pbBlacklistThis.clicked.connect(self._blacklist_song)
+
         self._spotify = Spotify()
         self._audio = AudioManager()
 
@@ -162,9 +164,28 @@ class Spotimute(QtGui.QWidget):
             self.ui.lblIsMuted.setText('  NO  ')
             self.ui.lblIsMuted.setStyleSheet(self._no_style)
 
+    def _blacklist_song(self):
+        title = self._spotify.get_title()
+        msg = u"Are you sure you want to blacklist this song?\n'{0}'"
+        msg = msg.format(title)
+        if self.ask_yes_or_no("Blacklist Song", msg):
+            self._spotify.blacklist(title)
+
     def ask_user(self, title='', question=''):
         response, ok = QtGui.QInputDialog.getText(None, title, question)
         return response, ok
+
+    def ask_yes_or_no(self, title='', question=''):
+        ret = False
+        res = QtGui.QMessageBox.question(
+            None, title, question,
+            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
+            QtGui.QMessageBox.No)  # default No
+
+        if res == QtGui.QMessageBox.Yes:
+            ret = True
+
+        return ret
 
     def display_data(self, data):
         QtGui.QMessageBox.information(self, 'Incoming Data', data)

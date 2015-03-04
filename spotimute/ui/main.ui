@@ -147,7 +147,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pbBlacklistThis">
        <property name="toolTip">
         <string>Blacklist this one!</string>
        </property>
@@ -163,13 +163,12 @@
    </item>
   </layout>
   <zorder>lwSongs</zorder>
-  <zorder></zorder>
   <zorder>label</zorder>
  </widget>
  <tabstops>
   <tabstop>cbAutoMute</tabstop>
   <tabstop>lwSongs</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>pbBlacklistThis</tabstop>
  </tabstops>
  <resources/>
  <connections/>

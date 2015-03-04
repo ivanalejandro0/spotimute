@@ -45,3 +45,12 @@ class Spotify(object):
                 return True
 
         return False
+
+    def blacklist(self, title):
+        try:
+            with open(self._blacklisted_path, 'a') as f:
+                f.write(title)
+
+            self._BLK.append(title)
+        except:
+            print "ERROR: couldn't write to blacklist file."
