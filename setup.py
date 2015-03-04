@@ -6,6 +6,12 @@ try:
 except ImportError:
     from distutils.core import setup
 
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from pkg import distribute_setup
+    distribute_setup.use_setuptools()
+    from setuptools import setup, find_packages
 from buildqt import BuildQt
 
 cmdclass = {}
@@ -16,7 +22,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 requirements = [
     # TODO: put package requirements here
-    'PySide',
+    # 'PySide',
     'sh',
 ]
 
@@ -32,11 +38,7 @@ setup(
     author='Ivan Alejandro',
     author_email='ivanalejandro0@gmail.com',
     url='https://github.com/ivanalejandro0/spotimute',
-    packages=[
-        'spotimute',
-    ],
-    package_dir={'spotimute':
-                 'spotimute'},
+    packages=find_packages('.'),
     include_package_data=True,
     install_requires=requirements,
     license="GPLv2",
@@ -51,6 +53,9 @@ setup(
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
     ],
+    entry_points={
+        'console_scripts': ['spotimute=spotimute.spotimute:main']
+    },
     test_suite='tests',
     tests_require=test_requirements
 )

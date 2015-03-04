@@ -170,7 +170,7 @@ class Spotimute(QtGui.QWidget):
         QtGui.QMessageBox.information(self, 'Incoming Data', data)
 
 
-if __name__ == '__main__':
+def main():
     app = QtGui.QApplication(sys.argv)
 
     window = Spotimute()
@@ -180,3 +180,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
