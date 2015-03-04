@@ -37,7 +37,7 @@ class Spotify(object):
     def is_blacklisted(self):
         title = self.get_title()
 
-        if title is None:
+        if title is None or self._BLK is None:
             return False
 
         for ad in self._BLK:
