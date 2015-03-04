@@ -17,10 +17,8 @@ class BuildQt(Command):
     It looks for *.ui files in _UI_PATH subfolder.
     It looks for *.qrc files in _QRC_PATH subfolder.
     """
-    # _UI_PATH = os.path.join('splash', 'ui')
-    # _QRC_PATH = os.path.join('splash', 'resources')
-    _UI_PATH = os.path.join('src', 'ui')
-    _QRC_PATH = os.path.join('src', 'ui')
+    _UI_PATH = os.path.join('spotimute', 'ui')
+    _QRC_PATH = os.path.join('spotimute', 'ui')
 
     # I don't think setuptools uses these options
     user_options = [
